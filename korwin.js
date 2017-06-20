@@ -1,17 +1,24 @@
 (function() {
   'use strict';
-
+  
+  /
   var change = {
+    what: 'float',
     from: 'left',
     to: 'right'
   };
 
-  [].filter.call(
-    document.body.getElementsByTagName('*'),
-    function (el) {
-      return getComputedStyle(el).float === change.from;
-    }
-  ).forEach(function (el) {
-    el.style.float = change.to;
-  });
+  [].filter.call(getAllElements(), isLookedFor).forEach(applyChange);
+  
+  function getAllElements () {
+    return document.body.getElementsByTagName('*');
+  }
+  
+  function isLookedFor (el) {
+    return getComputedStyle(el)[change.what] === change.from;
+  }
+  
+  function applyChange (el) {
+    el.style[change.what] = change.to;
+  }
 })();
