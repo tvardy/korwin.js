@@ -1,7 +1,6 @@
 (function() {
   'use strict';
   
-  /
   var change = {
     what: 'float',
     from: 'left',
